@@ -1,0 +1,15 @@
+{
+    "simconfig": {
+        "AddressOffset": 0,
+        "CheckTLM2Protocol": false,
+        "DatabaseRecording": true,
+        "Debug": false,
+        "EnableWindowing": true,
+        "PowerAnalysis": false,
+        "SimulationName": "iss_v2pro_eis",
+        "SimulationProgressBar": true,
+        "StoreMode": "Store",
+        "UseMalloc": false,
+        "WindowSize": 1000
+    }
+}
