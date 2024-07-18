@@ -91,7 +91,7 @@ set(DRAMSYS_EXTENSIONS_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/extensions")
 ### Build options ###
 option(DRAMSYS_BUILD_TESTS "Build DRAMSys unit tests" OFF)
 option(DRAMSYS_VERBOSE_CMAKE_OUTPUT "Show detailed CMake output" OFF)
-option(DRAMSYS_BUILD_CLI "Build DRAMSys Command Line Tool" ON)
+option(DRAMSYS_BUILD_CLI "Build DRAMSys Command Line Tool" OFF)
 option(DRAMSYS_WITH_DRAMPOWER "Build with DRAMPower support enabled." OFF)
 option(DRAMSYS_ENABLE_EXTENSIONS "Enable proprietary DRAMSys extensions." OFF)
 
