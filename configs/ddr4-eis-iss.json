@@ -2,13 +2,8 @@
     "simulation": {
         "addressmapping": "am_ddr4_8GB_8x1024KB_x8_dimm_p1KB_brc.json",
         "mcconfig": "fr_fcfs.json",
-<<<<<<< HEAD
-        "memspec": "JEDEC_4Gb_DDR4-1866_8bit_A.json",
-        "simconfig": "gem5_se.json",
-=======
         "memspec": "NANYA_8Gb_DDR4-1600_8bit_A.json",
         "simconfig": "iss_v2pro_eis.json",
->>>>>>> 82ddeb8 (Add a new memroy configuration (DDR4-8GB-1600) for simulating of the memory on FPGA)
         "simulationid": "ddr4-eis-iss"
     }
 }
