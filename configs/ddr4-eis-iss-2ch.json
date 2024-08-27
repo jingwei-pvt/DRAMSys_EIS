@@ -2,7 +2,7 @@
     "simulation": {
         "addressmapping": "am_ddr4_8GB_8x1024KB_x8_dimm_p1KB_brc_2ch.json",
         "mcconfig": "fr_fcfs.json",
-        "memspec": "NANYA_8Gb_DDR4-1600_8bit_A_2ch.json",
+        "memspec": "NANYA_8GB_DDR4-1600_8bit_A_2ch.json",
         "simconfig": "iss_v2pro_eis.json",
         "simulationid": "ddr4-eis-iss-2ch"
     }
