@@ -132,6 +132,8 @@ tlm_sync_enum Dram::nb_transport_fw(tlm_generic_payload& trans, tlm_phase& phase
 {
     assert(phase >= BEGIN_RD && phase <= END_SREF);
 
+    uint64_t transAddr =  removeChannelBits(trans.get_address());
+    
 #ifdef DRAMPOWER
     if (powerAnalysis)
     {
@@ -145,7 +147,7 @@ tlm_sync_enum Dram::nb_transport_fw(tlm_generic_payload& trans, tlm_phase& phase
     {
         if (phase == BEGIN_RD || phase == BEGIN_RDA)
         {
-            unsigned char* phyAddr = memory + trans.get_address();
+            unsigned char* phyAddr = memory + transAddr;
 
             if (trans.get_byte_enable_ptr() == nullptr)
             {
@@ -166,7 +168,7 @@ tlm_sync_enum Dram::nb_transport_fw(tlm_generic_payload& trans, tlm_phase& phase
         else if (phase == BEGIN_WR || phase == BEGIN_WRA || phase == BEGIN_MWR ||
                  phase == BEGIN_MWRA)
         {
-            unsigned char* phyAddr = memory + trans.get_address();
+            unsigned char* phyAddr = memory + transAddr;
 
             if (trans.get_byte_enable_ptr() == nullptr)
             {
@@ -202,13 +204,14 @@ unsigned int Dram::transport_dbg(tlm_generic_payload& trans)
     {
         tlm_command cmd = trans.get_command();
         unsigned int len = trans.get_data_length();
+        uint64_t transAddr =  removeChannelBits(trans.get_address());
 
         if (cmd == TLM_READ_COMMAND)
         {
             if (storeMode == Configuration::StoreMode::Store)
             {
-                unsigned char* phyAddr = memory + trans.get_address();
-
+                // unsigned char* phyAddr = memory + trans.get_address();
+                unsigned char* phyAddr = memory + transAddr;
                 if (trans.get_byte_enable_ptr() == nullptr)
                 {
                     memcpy(trans.get_data_ptr(), phyAddr, trans.get_data_length());
@@ -235,7 +238,8 @@ unsigned int Dram::transport_dbg(tlm_generic_payload& trans)
         {
             if (storeMode == Configuration::StoreMode::Store)
             {
-                unsigned char* phyAddr = memory + trans.get_address();
+                // unsigned char* phyAddr = memory + trans.get_address();
+                unsigned char* phyAddr = memory + transAddr;
 
                 if (trans.get_byte_enable_ptr() == nullptr)
                 {
@@ -277,6 +281,8 @@ void Dram::b_transport(tlm_generic_payload& trans, [[maybe_unused]] sc_time& del
     if (storeMode == Configuration::StoreMode::Store)
     {
         unsigned char* phyAddr = memory + trans.get_address();
+        // uint64_t transAddr =  removeChannelBits(trans.get_address());
+        // unsigned char* phyAddr = memory + transAddr;
 
         if (trans.is_read())
         {

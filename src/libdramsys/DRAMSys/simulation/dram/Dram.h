@@ -98,6 +98,26 @@ public:
     Dram& operator=(const Dram&) = delete;
     Dram& operator=(Dram&&) = delete;
     ~Dram() override;
+
+private:
+    //Just compatible for ISS of V2PRO in E.I.S.
+    uint64_t removeChannelBits(uint64_t addr) {
+        const int numberOfChannelBits=
+                    static_cast <int>(std::log2(memSpec.numberOfChannels) );
+
+        if (numberOfChannelBits == 0) return addr;
+
+        // the bit scope of channel
+        const int start = 12;
+        const int end = start + numberOfChannelBits;
+
+        // masks for concatenate
+        uint64_t mask1 = (1ULL << start) - 1;
+        uint64_t mask2 = (1ULL << (64 - end)) - 1;
+
+        return (addr & mask1)| ((addr & (mask2 << end)) >> numberOfChannelBits);
+    }
+
 };
 
 } // namespace DRAMSys
