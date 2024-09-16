@@ -1,0 +1,9 @@
+{
+    "simulation": {
+        "addressmapping": "am_hbm2_16GB_pc_brc_32ch.json",
+        "mcconfig": "fr_fcfs.json",
+        "memspec": "HBM2_16GB_EIS_32ch.json",
+        "simconfig": "iss_v2pro_eis.json",
+        "simulationid": "hbm2-eis-iss-32ch"
+    }
+}
